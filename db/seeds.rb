@@ -5,7 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Photo.delete_all
+Profile.delete_all
+Product.delete_all
 User.delete_all
 
-User.create(email: "namoneo@icloud.com", password: "secret")
-User.create(email: "admin@admin.com", password: "secret")
+
+# Users
+moder = User.create(email: "info@admin.com", password: "secret")
+admin = User.create(email: "admin@admin.com", password: "secret")
+
+# Photos
+photo1 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/mike_u1mn6h.jpg")
+photo2 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/cheetos_flaminhot_sthgbz.jpg")
+photo3 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/248037_2_bp9wu6.png")
+
+
+# Products
+Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo1])
+Product.create(name: "Cheetos crunchy flaming hot", price: 3, user_id: 2, photos: [photo2])
+Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo3])
