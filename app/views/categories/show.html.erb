@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+
+<h4>List of products</h4>
+
+<p>
+<strong>Category:</strong>
+<%= @category.name %>
+  </p>
+
+
+<% if @category.products.any? %>
+    <ul>
+      <% @category.products.each do |product| %>
+          <li><p><%= link_to product.name, product_path(product.id) %></p></li>
+      <% end %>
+    </ul>
+<% else %>
+    <p>There are no products in this category.</p>
+<% end %>
+
+<%= link_to 'Back', pages_home_path %>

@@ -4,10 +4,9 @@
   <div class="panel-body">
 
     <p>Product: <%= @product.name %></p>
-    <p>Price: <%= @product.price %></p>
-
+    <p>Price: <%= @product.price %> Euro</p>
+    <p><%= image_tag @product.image %></p>
   </div>
 
 </div>
-<%= link_to "Delete", product_path( @product.id ), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%>
-<%= link_to "Back", products_path, class: "btn btn-default" %>
+<%= link_to "Back", pages_home_path, class: "btn btn-default" %>
