@@ -34,6 +34,12 @@ gem 'jbuilder', '~> 2.5'
 # Device
 gem 'devise'
 
+# carrierwave
+gem 'carrierwave'
+
+# cloudinary
+gem 'cloudinary'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -53,6 +59,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'factory_girl_rails', '4.7.0'
+  gem 'faker', '1.6.6'
 end
 
 group :test do

@@ -5,8 +5,16 @@
 
     <p>Product: <%= @product.name %></p>
     <p>Price: <%= @product.price %> Euro</p>
-    <p><%= image_tag @product.image %></p>
+
+      <% @product.photos.each do |photo| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= image_tag photo.image.thumbnail %>
+        </div>
+      </div>
+      <% end %>
   </div>
 
 </div>
+<%= link_to "Delete", product_path( @product.id ), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%>
 <%= link_to "Back", pages_home_path, class: "btn btn-default" %>

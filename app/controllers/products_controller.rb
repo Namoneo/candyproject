@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
     end
 
     def show
+       @photos = @product.photos
     end
 
     def new
@@ -16,18 +17,31 @@ class ProductsController < ApplicationController
       @product = current_user.products.build(product_params)
 
       if @product.save
-        redirect_to @product, notice: "Product successfully created"
-      else
+        image_params.each do |image|
+          @product.photos.create(image: image)
+        end
+
+        redirect_to edit_product_path(@product), notice: "Product successfully created"
+        else
         render :new
-      end
+        end
     end
 
     def edit
+      if current_user.id == @product.user.id
+        @photos = @product.photos
+      else
+        redirect_to root_path, notice: "You don't have permission."
+      end
     end
 
     def update
       if @product.update(product_params)
-        redirect_to @product, notice: "Product successfully updated"
+        image_params.each do |image|
+          @product.photos.create(image: image)
+        end
+
+        redirect_to edit_product_path(@product), notice: "Product successfully updated"
       else
         render :edit
       end
@@ -48,5 +62,9 @@ class ProductsController < ApplicationController
 
       def product_params
         params.require(:product).permit(:name, :price, :category_id)
+      end
+
+      def image_params
+        params[:images].present? ? params.require(:images) : []
       end
 end
