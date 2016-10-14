@@ -5,13 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Photo.delete_all
+Profile.delete_all
+Product.delete_all
 User.delete_all
 
-malenka = User.create(email: "malenka@codaisseurbnb.com", password: "secret")
-sinterklaas=User.create(email: "sinterklaas@codaisseurbnb.com", password: "secret")
+
+# Users
+moder = User.create(email: "info@admin.com", password: "secret")
+admin = User.create(email: "admin@admin.com", password: "secret")
+
+# Photos
+photo1 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/mike_u1mn6h.jpg")
+photo2 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/cheetos_flaminhot_sthgbz.jpg")
+photo3 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/248037_2_bp9wu6.png")
 
 
-malenka_profile = Profile.create(first_name: "Malenka", last_name: "van Ommen", street_address: "Blablabla", number: "42", city: "Arnhem", zip_code: "1234ab", state_region: "Gelderland", country: "Netherland")
-sinterklaas_profile = Profile.create(first_name: "Sint", last_name: "Nicolaas", street_address: "Sintstreet", number: 1, city: "Madrid", zip_code: "5678er", state_region: "Sintplace", country: "Spain")
-
-
+# Products
+Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo1])
+Product.create(name: "Cheetos crunchy flaming hot", price: 3, user_id: 2, photos: [photo2])
+Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo3])
