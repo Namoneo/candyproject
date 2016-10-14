@@ -1,9 +1,8 @@
 class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update]
-    before_action :authenticate_user!, except: [:show]
 
     def index
-      @products = current_user.products
+      @products = Product.all
     end
 
     def show
@@ -62,7 +61,7 @@ class ProductsController < ApplicationController
       end
 
       def product_params
-        params.require(:product).permit(:name, :price)
+        params.require(:product).permit(:name, :price, :category_id)
       end
 
       def image_params

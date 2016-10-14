@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  resources :categories
   get 'pages/home'
+  get 'pages/about'
+  get 'pages/contact'
+  get 'pages/service'
+  get 'pages/dutch'
 
   devise_for :users
 
