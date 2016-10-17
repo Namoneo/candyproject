@@ -1,31 +1,28 @@
 <div class="row">
   <div class="col-md-3">
-    <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Your Products", products_path, class: "sidebar-link" %></li>
-    </ul>
+        <% @categories.each do |category| %>
+        <div class="sidebar-link"><%=link_to category.name, category %> </div>
+        <% end %>
   </div>
   <div class="col-md-9">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        Your Listings
+        Candyshop
       </div>
       <div class="panel-body">
-
         <% @products.each do |product| %>
-        <div class="row">
-          <div class="col-md-7">
-            <h4><%= product.name %></h4>
-          </div>
-          <div class="col-md-3 right">
-            <%= link_to "View", product, class: "btn btn-default" %>
-            <%= link_to "Update", edit_product_path(product), class: "btn btn-default" %>
+        <div class="col-xs-4">
+          <div class="img-thumbnail">
+            <% product.photos.each do |photo| %>
+            <div class="img-thumbnail"><%= image_tag photo.image.thumbnail, class: "img-responsive" %></div>
+            <h4><%= link_to product.name, product %></h4>
+            <h4>Price: <%= product.price %> Euro</h4>
+            <% end %>
           </div>
         </div>
         <% end %>
 
       </div>
     </div>
-
-    <%= link_to "Add new product", new_product_path, class: "btn btn-primary" %>
   </div>
 </div>
