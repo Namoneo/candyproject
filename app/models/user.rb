@@ -12,8 +12,10 @@ class User < ApplicationRecord
   def full_name
     profile.full_name
   end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   def has_admin?
     has.admin?
   end

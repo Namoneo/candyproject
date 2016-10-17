@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :categories
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
@@ -8,10 +7,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'products#index'
+  root to: 'pages#home'
 
   resources :profiles, only: [:new, :edit, :create, :update]
   resources :products
   resources :photos
+  resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

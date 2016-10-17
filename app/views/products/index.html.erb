@@ -1,7 +1,11 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Your Products", products_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "All Products", products_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Dutch Candy", categories.name[1], class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Japanese Candy", products_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "American Candy", products_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Chocolate", products_path, class: "sidebar-link" %></li>
     </ul>
   </div>
   <div class="col-md-9">

@@ -1,5 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "association with product" do
+    let(:user) { create :user }
+    let(:category) { create :category }
+
+    let(:product1) { create :product, name: "Candybar", categories: [category] }
+    let(:product2) { create :product, name: "Lollypop", categories: [category] }
+    let(:product3) { create :product, name: "sweets", categories: [category] }
+
+    it "has products" do
+      expect(category.products).to include(product1)
+      expect(category.products).to include(product2)
+      expect(category.products).to include(product3)
+    end
+  end
 end
+
+##Test si failing because relationship with product is not correctly defined.
+
+
+
+
