@@ -8,6 +8,14 @@
     <div class="panel panel-primary">
       <div class="panel-heading">
         Candyshop
+        <th><%= link_to "sort by name", :sort => "name" %></th>
+        <th><%= link_to "sort by price", :sort => "price" %></th>
+
+        <%= form_tag products_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search" %>
+        <% end %>
+
       </div>
       <div class="panel-body">
         <% @products.each do |product| %>
@@ -21,6 +29,8 @@
           </div>
         </div>
         <% end %>
+
+        <%= will_paginate @products %>
 
       </div>
     </div>

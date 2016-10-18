@@ -9,6 +9,8 @@
     <div class="panel panel-primary">
       <div class="panel-heading">
       <%= @category.name %>
+        <th><%= link_to "sort by name", :sort => "name" %></th>
+        <th><%= link_to "sort by price", :sort => "price" %></th>
       </div>
       <div class="panel-body">
       <div class="col-xs-4">

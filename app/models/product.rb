@@ -9,4 +9,12 @@ class Product < ApplicationRecord
   def self.order_by_name
     order(:name)
   end
+
+  def self.search(search)
+    if search
+      where(["name LIKE ?","%#{search}%"])
+    else
+      all
+    end
+  end
 end

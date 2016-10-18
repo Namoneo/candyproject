@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update]
 
     def index
-      @products = Product.all
+      @products = Product.search(params[:search]).order(params[:sort]).paginate(:per_page => 6, :page => params[:page])
       @categories = Category.all
     end
 
@@ -67,5 +67,5 @@ class ProductsController < ApplicationController
 
       def image_params
         params[:images].present? ? params.require(:images) : []
-      end
+        end
 end
