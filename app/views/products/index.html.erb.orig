@@ -1,17 +1,23 @@
 <div class="row">
   <div class="col-md-3">
-    <div class="lead"><center>CANDY STORE</center></div>
-    <center><p> The most sweetest candies </p></center>
-    <div class="list-group">
+<<<<<<< HEAD
         <% @categories.each do |category| %>
-        <div class="list-group-item"><%=link_to category.name, category %> </div>
+        <div class="sidebar-link"><%=link_to category.name, category %> </div>
         <% end %>
+=======
+    <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "All Products", products_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Dutch Candy", categories.name[1], class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Japanese Candy", products_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "American Candy", products_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Chocolate", products_path, class: "sidebar-link" %></li>
+    </ul>
+>>>>>>> master
   </div>
-</div>
   <div class="col-md-9">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <center>Sweetest candies</center>
+        Candyshop
       </div>
       <div class="panel-body">
         <% @products.each do |product| %>
