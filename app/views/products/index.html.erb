@@ -4,7 +4,7 @@
     <center><p> The most sweetest candies </p></center>
     <div class="list-group">
         <% @categories.each do |category| %>
-        <div class="list-group-item"><%=link_to category.name, category %> </div>
+        <div class="sidebar-link"><%=link_to category.name, category %> </div>
         <% end %>
   </div>
 </div>
@@ -14,7 +14,6 @@
         <center>Sweetest candies</center>
       </div>
       <div class="panel-body">
-
         <% @products.each do |product| %>
         <div class="col-xs-4">
           <div class="img-thumbnail">
@@ -30,7 +29,5 @@
 
       </div>
     </div>
-
-    
   </div>
 </div>

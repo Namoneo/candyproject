@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
     end
 
     def new
+      if current_user.admin?
+
+      end
       @product = current_user.products.build
     end
 
