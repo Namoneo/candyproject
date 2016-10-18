@@ -1,22 +1,30 @@
 <p id="notice"><%= notice %></p>
-
-
-<h4>List of products</h4>
-
-<p>
-<strong>Category:</strong>
-<%= @category.name %>
-  </p>
-
-
-<% if @category.products.any? %>
-    <ul>
+<div class="row">
+  <div class="col-md-3">
+        <% @categories.each do |category| %>
+        <div class="sidebar-link"><%=link_to category.name, category %> </div>
+        <% end %>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      <%= @category.name %>
+      </div>
+      <div class="panel-body">
+      <div class="col-xs-4">
+      <div class="img-thumbnail">
+      <% if @category.products.any? %>
       <% @category.products.each do |product| %>
-          <li><p><%= link_to product.name, product_path(product.id) %></p></li>
+      <% product.photos.each do |photo| %>
+      <%= image_tag photo.image.thumbnail, class: "img-responsive" %></div>
+      <h4><%= link_to product.name, product %></h4>
+      <h4>Price: <%= product.price %> Euro</h4>
       <% end %>
-    </ul>
-<% else %>
-    <p>There are no products in this category.</p>
-<% end %>
-
-<%= link_to 'Back', pages_home_path %>
+      <% end %>
+      </div>
+      </div>
+      </div>
+      <% else %>
+          <p>There are no products in this category.</p>
+        <% end %>
+      </div>
