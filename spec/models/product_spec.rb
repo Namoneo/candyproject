@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
+
+
+  # validations
+
   describe "validations" do
     it "is invalid without a name" do
       product = Product.new(name: "")
@@ -15,6 +19,8 @@ RSpec.describe Product, type: :model do
     end
   end
 
+  # methodes: order_by_name
+
   describe "#order_by_name" do
     let(:user) { create :user}
     let(:category) { create :category }
@@ -27,4 +33,25 @@ RSpec.describe Product, type: :model do
     end
   end
 end
+
+  #Relation with category
+
+
+  require 'rails_helper'
+
+  RSpec.describe Product, type: :model do
+
+
+    describe "association with category" do
+      let(:user) { create :user}
+      let(:category) { create :category }
+      let(:product) { create :product, user: user, category: category }
+
+      it "belongs to a category" do
+        product = category.products.new(name: "testproduct")
+
+        expect(product.category).to eq(category)
+      end
+    end
+  end
 
