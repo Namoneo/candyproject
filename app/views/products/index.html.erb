@@ -14,6 +14,7 @@
         <center>Sweetest candies</center>
       </div>
       <div class="panel-body">
+
         <% @products.each do |product| %>
         <div class="col-xs-4">
           <div class="img-thumbnail">
@@ -21,6 +22,7 @@
             <div class="img-thumbnail"><%= image_tag photo.image.thumbnail, class: "img-responsive" %></div>
             <h4><%= link_to product.name, product %></h4>
             <h4>Price: <%= product.price %> Euro</h4>
+ 		<%= button_to 'Add to Cart', line_items_path(product_id: product) %>
             <% end %>
           </div>
         </div>
@@ -28,5 +30,7 @@
 
       </div>
     </div>
+
+    
   </div>
 </div>
