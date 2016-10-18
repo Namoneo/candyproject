@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     end
 
     def new
-      @product = current_user.products.build
+      @product =current_user.products.build
     end
 
     def create
