@@ -10,6 +10,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
+    @product = Product.all
   end
 
   # GET /line_items/new
@@ -26,7 +27,7 @@ class LineItemsController < ApplicationController
   def create
 
     @cart = current_cart
-    @product = Product.first(params[:product_id])
+    product = Product.find(params[:product_id])
     @line_item = @cart.line_items.build(product: product)
 
     respond_to do |format|

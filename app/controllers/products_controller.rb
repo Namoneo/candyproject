@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
     def show
        @photos = @product.photos
+        @line_item =Product.all
     end
 
     def new
