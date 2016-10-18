@@ -26,12 +26,16 @@ photo2 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/ima
 photo3 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/248037_2_bp9wu6.png")
 
 # Products
-Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo1])
-Product.create(name: "Cheetos crunchy flaming hot", price: 3, user_id: 2, photos: [photo2])
-Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo3])
+product1 = Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo1])
+product2 = Product.create(name: "Cheetos crunchy flaming hot", price: 3, user_id: 2, photos: [photo2])
+product3 = Product.create(name: "Mike Ike minion box", price: 2.50,  user_id: 2, photos: [photo3])
 
 # Categories
 category1 = Category.create(name: "Dutch candy")
 category2 = Category.create(name: "Japanese candy")
 category3 = Category.create(name: "American candy")
 category4 = Category.create(name: "Chocolate")
+
+# Category saves
+category1.products << [product1, product2, product3]
+category1.save
