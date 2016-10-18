@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 <<<<<<< HEAD
-
+  resources :line_items
+  resources :carts
 =======
+
 >>>>>>> master
   get 'pages/home'
   get 'pages/about'
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'pages#home'
+  root to: 'products#index'
 
   resources :profiles, only: [:new, :edit, :create, :update]
   resources :products

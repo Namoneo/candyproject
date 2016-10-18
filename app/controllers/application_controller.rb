@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 # object and then attemps to find a cart corresponding to it. If this is not found, then a new Cart is created .
 #The method is private thus it can be available only to controlers
 
-  private
+
   def current_cart
     Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
