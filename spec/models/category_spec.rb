@@ -17,7 +17,7 @@ RSpec.describe Category, type: :model do
   end
 end
 
-##Test si failing because relationship with product is not correctly defined.
+##Test is failing because relationship with product is nog many to many -> change test to 1 to many.
 
 
 
