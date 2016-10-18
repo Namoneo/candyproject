@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  resources :line_items
+  resources :carts
+=======
 
+>>>>>>> master
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
@@ -14,8 +19,5 @@ Rails.application.routes.draw do
   resources :products
   resources :photos
   resources :categories
-  resources :line_items
-  resources :carts
-  resources :searches
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

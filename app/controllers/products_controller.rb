@@ -11,7 +11,10 @@ class ProductsController < ApplicationController
     end
 
     def new
-      @product =current_user.products.build
+      if current_user.admin?
+
+      end
+      @product = current_user.products.build
     end
 
     def create
@@ -67,5 +70,5 @@ class ProductsController < ApplicationController
 
       def image_params
         params[:images].present? ? params.require(:images) : []
-        end
+      end
 end
