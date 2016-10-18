@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-
   <title>CandyShop</title>
-
-
 </head>
-
 <body>
-
 .navbar-default {
 background-color: #F8F8F8;
 border-color: #E7E7E7;
@@ -56,7 +49,7 @@ border-color: #E7E7E7;
                 <ul class="dropdown-menu">
                   <li role="separator" class="divider"></li>
                   <li><%= link_to "Your Products", products_path %></li>
-                  <li><%= link_to "Cart", products_path %></li>
+                  <li><%= link_to "Add new product", new_product_path %></li>
                   <% if current_user.has_profile? %>
                       <li><%= link_to "Edit Profile", edit_profile_path(current_user.profile) %></li>
                   <% else %>

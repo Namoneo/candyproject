@@ -1,2 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  border-color: #337AB7;
+}

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'pages#home'
+  root to: 'products#index'
 
   resources :profiles, only: [:new, :edit, :create, :update]
   resources :products
