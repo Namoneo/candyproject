@@ -97,11 +97,11 @@ ActiveRecord::Schema.define(version: 20161019151201) do
 
   create_table "searches", force: :cascade do |t|
     t.string   "keywords"
-    t.string   "category"
+    t.integer  "category_id"
     t.decimal  "min_price"
     t.decimal  "max_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
