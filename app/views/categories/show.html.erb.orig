@@ -1,32 +1,40 @@
+<center><img class="logo" src="http://static.wixstatic.com/media/675e59_24087219fb674baf98bd364ea2b25290.png" alt="Mountain View" style="width:304px;height:228px;"></center>
 <div class="row">
   <div class="col-md-3">
+<<<<<<< HEAD
+        <% @categories.each do |category| %>
+        <div class="sidebar-link"><%=link_to category.name, category %> </div>
+        <% end %>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      <%= @category.name %>
+        <th><%= link_to "sort by name", :sort => "name" %></th>
+        <th><%= link_to "sort by price", :sort => "price" %></th>
+      </div>
+      <div class="panel-body">
+      <div class="col-xs-4">
+      <div class="img-thumbnail">
+      <% if @category.products.any? %>
+      <% @category.products.each do |product| %>
+      <% product.photos.each do |photo| %>
+      <%= image_tag photo.image.thumbnail, class: "img-responsive" %></div>
+      <h4><%= link_to product.name, product %></h4>
+      <h4>Price: <%= product.price %> Euro</h4>
+=======
     <div class="lead">Candyshop</div>
     <div class="list-group">
       <% @categories.each do |category| %>
           <div class="list-group-item"><%=link_to category.name, category %> </div>
+>>>>>>> master
       <% end %>
-      <br>
-      <div class="list-group-item">
-      <%= form_tag products_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-        <%= link_to "Advanced Search", new_search_path %>
-    <% end %> </div>
-    <br>
     </div>
   </div>
     <div class="col-md-9">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <%= @category.name %>
-          <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort by
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li> <%= link_to "Sort by name", :sort => "name" %></li>
-            <li><%= link_to "Sort by price", :sort => "price" %></li>
-          </ul>
-        </div>
         </div>
         <div class="panel-body">
           <% if @category.products.any? %>

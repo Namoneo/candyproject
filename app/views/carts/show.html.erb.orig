@@ -1,6 +1,7 @@
 <% if notice %>
     <p id="notice"><%= notice %></p>
 <% end %>
+<<<<<<< HEAD
 <div class="cart_title">Your Cart</div>
 <table>
   <% @cart.line_items.each do |item| %>
@@ -18,3 +19,13 @@
 </table>
 <%= button_to 'Empty cart', @cart, method: :delete,
               confirm: 'Are you sure?' %>
+=======
+<h2>Your Shopping Cart</h2>
+<ul>
+  <% @cart.line_items.each do |item| %>
+      <li><%= item.product.name %></li>
+      <li><%= item.product.price %></li>
+
+  <% end %>
+</ul>
+>>>>>>> master
