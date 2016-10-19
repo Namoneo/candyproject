@@ -1,11 +1,9 @@
-class Product < ApplicationRecord
+class Product < ActiveRecord::Base
   belongs_to :user
   has_many :photos, dependent: :destroy
   belongs_to :category
   validates :name, presence: true
   validates :price, presence: true
-
-  class Product < ActiveRecord::Base
   has_many :line_items
 
   def ensure_not_referenced_by_any_line_item
@@ -16,7 +14,6 @@ class Product < ApplicationRecord
         return false
       end
     end
-  end
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
