@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @categories = Category.all
-    @products = Product.all
+    @products = Product.order(params[:sort])
   end
 
   # GET /categories/new

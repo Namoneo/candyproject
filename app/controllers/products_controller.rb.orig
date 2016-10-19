@@ -8,14 +8,17 @@ class ProductsController < ApplicationController
 
     def show
        @photos = @product.photos
-        @line_item =Product.all
     end
 
     def new
+<<<<<<< HEAD
+      @product =current_user.products.build
+=======
       if current_user.admin?
 
       end
       @product = current_user.products.build
+>>>>>>> master
     end
 
     def create
@@ -71,5 +74,5 @@ class ProductsController < ApplicationController
 
       def image_params
         params[:images].present? ? params.require(:images) : []
-      end
+        end
 end
