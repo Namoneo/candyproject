@@ -3,9 +3,10 @@
 <% end %>
 <h2>Your Shopping Cart</h2>
 <ul>
+  <div class="shopping-cart">
   <% @cart.line_items.each do |item| %>
       <li><%= item.product.name %></li>
       <li><%= item.product.price %></li>
-
   <% end %>
+  </div>
 </ul>
