@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
-    @categories = Product.uniq.pluck(:category_id)
+    @products = Product.all
   end
 
   def create

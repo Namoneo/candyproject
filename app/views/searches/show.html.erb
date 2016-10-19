@@ -11,11 +11,12 @@
     <% @search.search_products.each do |c| %>
       <br>
 
-      <div class="div">
         <h1><%= c.name %></h1>
         <p>Price: $<%= c.price %></p>
-        <p>Category: <%= c.category %></p>
-      </div>
+        <p>Category: <%= c.category.name %></p>
+        <% c.photos.each do |photo| %>
+        <%= image_tag photo.image.thumbnail %>
+        <% end %>
 
     <% end %>
 
