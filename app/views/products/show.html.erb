@@ -16,6 +16,8 @@
   </div>
 
 </div>
+<% if current_user.present? && current_user.admin? %>
 <%= link_to "Delete", product_path( @product.id ), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%>
 <%= link_to "Back", root_path, class: "btn btn-default" %>
 <%= link_to "Update", edit_product_path(@product), class: "btn btn-default" %>
+<% end %>
