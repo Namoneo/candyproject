@@ -1,17 +1,28 @@
-class Product < ApplicationRecord
+<<<<<<< HEAD
+class Product < ActiveRecord::Base
   belongs_to :user
   has_many :photos, dependent: :destroy
   belongs_to :category
   has_many :line_items
   validates :name, presence: true
   validates :price, presence: true
-
-  class Product < ActiveRecord::Base
+<<<<<<< HEAD
   has_many :line_items
 =======
 
 
 
+>>>>>>> master
+=======
+class Product < ApplicationRecord
+  belongs_to :user
+  has_many :photos, dependent: :destroy
+  belongs_to :category
+  validates :name, presence: true
+  validates :price, presence: true
+
+  class Product < ActiveRecord::Base
+  has_many :line_items
 >>>>>>> master
 
   def ensure_not_referenced_by_any_line_item
@@ -22,7 +33,10 @@ class Product < ApplicationRecord
         return false
       end
     end
+<<<<<<< HEAD
+=======
   end
+>>>>>>> master
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -32,6 +46,8 @@ class Product < ApplicationRecord
   end
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
   def self.search(search)
     if search
       where(["name LIKE ?","%#{search}%"])
@@ -40,9 +56,13 @@ class Product < ApplicationRecord
     end
   end
 =======
+>>>>>>> master
 
 
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> master
 >>>>>>> master
 end
