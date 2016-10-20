@@ -9,7 +9,7 @@
 
     <div class="field">
       <%= s.label :category %><br />
-      <%= s.select :category, options_for_select(@categories), :include_blank => true %>
+      <%= s.collection_select(:category_id, Category.all, :id, :name) %>
     </div>
 
     <div class="field">
@@ -22,7 +22,3 @@
     <% end %>
 
     <p><%= link_to 'Back', products_path %></p>
-
-
-
-
