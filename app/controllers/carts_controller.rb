@@ -54,24 +54,28 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy
     @cart = current_cart
+    @cart.destroy
     session[:cart_id] = nil
-
     respond_to do |format|
-      format.html { notice: 'Your cart is currently empty' }
+      format.html { redirect_to products_path,
+                                notice: 'Your cart is currently empty' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cart
+    @cart = Cart.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cart_params
-      params.fetch(:cart, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cart_params
+    params.fetch(:cart, {})
+  end
+
+  def image_params
+    params[:images].present? ? params.require(:images) : []
+  end
 end
