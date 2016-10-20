@@ -14,4 +14,4 @@ RSpec.describe User, type: :model do
       expect(user2.has_profile?).to eq(false)
       end
     end
-end
+
