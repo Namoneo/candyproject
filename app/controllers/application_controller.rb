@@ -15,16 +15,4 @@ class ApplicationController < ActionController::Base
     @cart
   end
 
-  def total_price_products
-    @product.price * quantity
-  end
-
-  def total_price
-    @line_items.to_a.sum { |item| item.total_price }
-  end
-
-  def show
-    @photos = @product.photos
-    @line_item =Product.all
-  end
 end

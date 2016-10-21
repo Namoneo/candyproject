@@ -5,7 +5,7 @@ class LineItem < ApplicationRecord
 
 
     def total_price
-        @product.price * quantity
+        product.price * quantity
     end
 
 
