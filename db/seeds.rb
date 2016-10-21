@@ -11,8 +11,6 @@ Category.delete_all
 Product.delete_all
 User.delete_all
 
-
-# Users
 namoneo = User.create(email: "info@admin.com", password: "secret")
 admin = User.create(email: "admin@admin.com", password: "secret")
 
