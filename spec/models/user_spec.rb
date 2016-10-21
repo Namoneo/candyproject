@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+    # Method: has a profile.
     describe "#has a profile?" do
     let(:user) { create :user}
     let(:profile) { create :profile }
@@ -14,4 +15,4 @@ RSpec.describe User, type: :model do
       expect(user2.has_profile?).to eq(false)
       end
     end
-end
+  end
