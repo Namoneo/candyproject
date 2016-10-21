@@ -1,20 +1,480 @@
 <% if notice %>
     <p id="notice"><%= notice %></p>
 <% end %>
-<div class="cart_title">Your Cart</div>
-<table>
-  <% @cart.line_items.each do |item| %>
-      <tr>
-        <td><%= item.quantity %>&times;</td>
-        <td><%= item.product.name %></td>
-        <td><%= item.product.price %></td>
-        <td class="item_price"><%= number_to_currency(item.total_price) %></td>
-      </tr>
-  <% end %>
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
-</table>
-<%= button_to 'Empty cart', @cart, method: :delete,
-              confirm: 'Are you sure?' %>
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>FlatUI Checkout concept</title>
+
+
+
+  <link rel='stylesheet prefetch' href='http://yui.yahooapis.com/combo?pure/0.1.0/base-min.css&pure/0.1.0/grids-min.css'>
+
+  <style>
+    /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+    @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+    /*
+     * Variables
+     */
+    /*
+     * CSS
+     */
+    body {
+      font: 1em/1.5 'Lato', sans-serif;
+      background: #ecf0f1;
+    }
+
+    .wrapper {
+      margin: 0.5em 0.5em 1em 0.5em;
+      padding: 1em 0.5em 0.5em 0.5em;
+      border-top: 0.5em solid #fff;
+      border-bottom: 0.25em solid #bdc3c7 !important;
+      background: #fff;
+      box-shadow: 0 0 0 0.5em rgba(189, 195, 199, 0);
+      -moz-transition: box-shadow 0.15s linear;
+      -o-transition: box-shadow 0.15s linear;
+      -webkit-transition: box-shadow 0.15s linear;
+      transition: box-shadow 0.15s linear;
+      /*
+       * alpha
+       */
+      /*
+       * beta
+       */
+      /*
+       * gamma
+       */
+      /*
+       * delta
+       */
+    }
+    .wrapper:hover {
+      box-shadow: 0 0 0 0.5em rgba(189, 195, 199, 0.6);
+    }
+    .wrapper h2 {
+      font-size: 2em;
+      font-weight: 700;
+      margin: 0 0 0.5em 0;
+    }
+    .wrapper h3 {
+      font-weight: 400;
+      margin: 0;
+      font-size: 1.2em;
+      line-height: 1.2;
+    }
+    .wrapper address {
+      font-style: normal;
+      margin-bottom: 0.5em;
+    }
+    .wrapper ul {
+      margin: 0;
+    }
+    .wrapper li {
+      margin-bottom: 0.5em;
+      border-bottom: .25em solid #fff;
+      padding-bottom: 0.5em;
+    }
+    .wrapper li:last-child {
+      border: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .wrapper label {
+      cursor: pointer;
+    }
+    .input {
+      width: 1.15em;
+      height: 1.15em;
+      background: #fff;
+      margin-right: 40px;
+      box-shadow: inset 0 0 0 .25em #fff;
+      vertical-align: text-bottom;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -moz-transition: background 0.15s linear;
+      -o-transition: background 0.15s linear;
+      -webkit-transition: background 0.15s linear;
+      transition: background 0.15s linear;
+    }
+    .wrapper input[type="number"] {
+      width: 1.75em;
+      height: 60%;
+      border: none;
+      padding: 0 0.25em;
+      text-align: center;
+      font-size: 2em;
+      position: relative;
+    }
+    .wrapper input[type="number"]:focus {
+      outline: none;
+      background: #ecf0f1;
+    }
+    .wrapper input[type="number"]::-webkit-inner-spin-button, .wrapper input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      cursor: pointer;
+      width: .5em;
+      height: 100%;
+      text-align: center;
+      color: #bdc3c7;
+    }
+    .wrapper input[type="number"]::-webkit-inner-spin-button:before, .wrapper input[type="number"]::-webkit-outer-spin-button:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: '\25B4';
+    }
+    .wrapper input[type="number"]::-webkit-inner-spin-button:after, .wrapper input[type="number"]::-webkit-outer-spin-button:after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      content: '\25BE';
+    }
+    .wrapper input:checked {
+      background: #ccc;
+    }
+    .wrapper img {
+      max-width: 100%;
+      max-height: 8em;
+      border: .25em solid #fff;
+    }
+    .wrapper table {
+      width: 100%;
+      border-spacing: 0 0.25em;
+      border-collapse: separate;
+      margin-top: -0.25em;
+    }
+    .wrapper th {
+      text-align: right;
+      padding-right: 1em;
+    }
+    .wrapper thead {
+      background: #e74c3c;
+    }
+    .wrapper thead th {
+      text-align: left;
+      padding: 0.5em;
+      color: #fff;
+    }
+    .wrapper thead th:last-child {
+      text-align: right;
+    }
+    .wrapper tr.alpha {
+      background: #e74c3c;
+      color: #fff;
+    }
+    .wrapper tr.alpha > th {
+      padding: 0.5em 1em 0.5em 0.5em;
+    }
+    .wrapper hr {
+      border: none;
+      border-bottom: 0.25em solid #fff;
+    }
+    .wrapper button {
+      border: none;
+      padding: 0.5em;
+      background: #ecf0f1;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -moz-transition: background 0.15s linear;
+      -o-transition: background 0.15s linear;
+      -webkit-transition: background 0.15s linear;
+      transition: background 0.15s linear;
+      display:inline-block;
+    }
+    button {
+      border: none;
+      padding: 0.5em;
+      background: #ecf0f1;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -moz-transition: background 0.15s linear;
+      -o-transition: background 0.15s linear;
+      -webkit-transition: background 0.15s linear;
+      transition: background 0.15s linear;
+      display:inline-block;
+    }
+    .wrapper button:hover {
+      background: #bdc3c7;
+    }
+    .wrapper button:before {
+      content: attr(data-icon);
+      padding-right: 0.5em;
+    }
+    .wrapper button.alpha:before {
+      content: "x";
+      color: #e74c3c;
+    }
+    .wrapper button.beta {
+      background: #1abc9c;
+      color: #fff;
+      font-weight: 700;
+      padding: 1em;
+      margin-top: 0.25em;
+      font-size: 1.25em;
+    }
+    .wrapper button.beta:hover {
+      background: #16a085;
+    }
+    .wrapper button.beta:before {
+      content: '\25B6';
+    }
+    .wrapper button.gamma:before {
+      content: '\25AA';
+      color: #bdc3c7;
+    }
+    .wrapper button.gamma:hover:before {
+      color: #ecf0f1;
+    }
+    .wrapper .text--right {
+      text-align: right;
+    }
+    .wrapper .text--left {
+      text-align: left;
+    }
+    .wrapper .helper--alpha {
+      padding-left: 1.5em;
+    }
+    .wrapper .wrapper--box {
+      color: #fff;
+      padding: 0.5em;
+      list-style-type: none;
+    }
+    .wrapper.wrapper__alpha {
+      border-color: #27ae60;
+    }
+    .wrapper.wrapper__alpha .wrapper--box {
+      background: #27ae60;
+    }
+    .wrapper.wrapper__alpha h2 {
+      color: #2ecc71;
+    }
+    .wrapper.wrapper__beta {
+      border-color: #2980b9;
+    }
+    .wrapper.wrapper__beta .wrapper--box {
+      background: #2980b9;
+    }
+    .wrapper.wrapper__beta h2 {
+      color: #3498db;
+    }
+    .wrapper.wrapper__beta li {
+      border-color: #3498db;
+    }
+    .wrapper.wrapper__beta input:checked {
+      background: #3498db;
+    }
+    .wrapper.wrapper__gamma {
+      border-color: #c0392b;
+    }
+    .wrapper.wrapper__gamma .wrapper--box {
+      border-top: 0.5em solid #c0392b;
+      color: #000;
+    }
+    .wrapper.wrapper__gamma h2,
+    .wrapper.wrapper__gamma h3 {
+      color: #e74c3c;
+    }
+    .wrapper.wrapper__gamma hr {
+      border-color: #e74c3c;
+    }
+    .wrapper.wrapper__delta {
+      border-color: #9b59b6;
+    }
+    .wrapper.wrapper__delta .wrapper--box {
+      background: #8e44ad;
+    }
+    .wrapper.wrapper__delta h2 {
+      color: #9b59b6;
+    }
+    .wrapper.wrapper__delta li {
+      border-color: #9b59b6;
+    }
+    .wrapper.wrapper__delta input:checked {
+      background: #9b59b6;
+    }
+
+  </style>
+
+
+  <script src="js/prefixfree.min.js"></script>
+
+
+
+</head>
+
+<body>
+
+<div class="onepage-checkout">
+  <div class="pure-g-r">
+
+    <!-- Billing & shipping address -->
+    <div class="pure-u-1-4">
+      <div class="pure-u-1-1">
+        <div class="wrapper wrapper__alpha">
+          <h2 class="__alpha">Billing Address</h2>
+          <address class="wrapper--box">
+            Gerard <br>
+            Frankfurt (Main) <br>
+            Germany
+          </address>
+          <button class="gamma">change</button>
+        </div>
+      </div>
+
+      <div class="pure-u-1-1">
+        <div class="wrapper wrapper__alpha">
+          <h2 class="__alpha">Shipping Address</h2>
+          <address class="wrapper--box">
+            Tim Pietrusky <br>
+            Frankfurt (Main) <br>
+            Germany
+          </address>
+          <button class="gamma">change</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shipping -->
+    <div class="pure-u-1-4">
+      <div class="pure-u-1-1">
+        <div class="wrapper wrapper__beta">
+          <h2 class="__alpha">Shipment</h2>
+
+          <ul class="wrapper--box">
+            <li>
+              <input type="radio" name="shipment" id="standard" />
+              <label for="standard">Standard</label>
+            </li>
+            <li>
+              <input type="radio" name="shipment" id="express" />
+              <label for="express">Express</label>
+            </li>
+            <li>
+              <input type="radio" name="shipment" id="tomorrow" />
+              <label for="tomorrow">Tomorrow Morning</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Delivery -->
+      <div class="pure-u-1-1">
+        <div class="wrapper wrapper__beta">
+          <h2 class="__alpha">Delivery</h2>
+
+          <ul class="wrapper--box">
+            <li>
+              <input type="radio" name="delivery" id="complete" />
+              <label for="complete">Complete</label>
+            </li>
+            <li>
+              <input type="radio" name="delivery" id="part" />
+              <label for="part">Part</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="pure-u-1-1">
+        <div class="wrapper wrapper__delta">
+          <h2 class="__alpha">Payment</h2>
+
+          <ul class="wrapper--box">
+            <li>
+              <input type="radio" name="payment" id="creditcard" />
+              <label for="creditcard">Creditcard</label>
+            </li>
+            <li>
+              <input type="radio" name="payment" id="paypal" />
+              <label for="paypal">PayPal</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="pure-u-1-2">
+
+      <div class="wrapper wrapper__gamma">
+        <h2 class="__alpha">Cart</h2>
+        <table class="">
+          <thead>
+          <tr>
+            <th>Article(s)</th>
+            <th></th>
+            <th>Total(s)</th>
+          </tr>
+          </thead>
+          <% @cart.line_items.each do |item| %>
+          <tr class="wrapper--box">
+            <td class="alpha">
+              <div class="pure-g">
+                <div class="pure-u-1-4">
+
+                  <%= image_tag item.product.photos.first().image.thumbnail %>
+                </div>
+                <div class="pure-u-3-4">
+                  <div class="helper--alpha">
+                    <h3><%= item.product.name %></h3>
+                    <p><%= number_to_currency(item.product.price) %></p>
+                    <p>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="alpha">
+              <div class="input"><%= item.quantity %>&times;</div>
+            </td>
+            <td class="alpha">
+              <%= number_to_currency(item.total_price) %>
+            </td>
+          </tr>
+              <% end %>
+          <tr>
+            <td colspan="3"><hr></td>
+          </tr>
+
+          <tr class="wrapper--box">
+            <td>
+              <div class="pure-g">
+            </td>
+            <td >
+            </td>
+          </tr>
+          <tr>
+            <th colspan='2'>Subtotal</th>
+            <td><%= number_to_currency(@cart.total_price) %></td>
+          </tr>
+          <tr>
+
+            <th colspan='2'>Shipping</th>
+            <td>$15.00</td>
+          </tr>
+          <tr class="alpha">
+            <th colspan='2'>Total</th>
+            <td><%= number_to_currency(@cart.total_price + 15) %></td>
+          </tr>
+          <tr>        <%= button_to 'Empty cart', @cart, method: :delete,
+                                    confirm: 'Are you sure?', :class => 'button' %></tr>
+        </table>
+        <div class="text--right">
+          <button class="beta">checkout</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>
