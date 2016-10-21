@@ -19,7 +19,7 @@ RSpec.describe Product, type: :model do
     end
   end
 
-  # methode: order_by_name
+  # method: order_by_name
 
   describe "#order_by_name" do
     let(:user) { create :user}
@@ -33,7 +33,8 @@ RSpec.describe Product, type: :model do
     end
   end
 
-  # methode: search
+  # method: search
+
       describe "#search" do
         let(:user) { create :user}
         let(:category) { create :category }
