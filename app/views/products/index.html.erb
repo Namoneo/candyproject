@@ -38,7 +38,7 @@
         <div class="col-xs-4">
           <div class="img-thumbnail">
             <% product.photos.each do |photo| %>
-            <div class="img-thumbnail"><%= image_tag photo.image.thumbnail, class: "img-responsive" %></div>
+            <div class="img-thumbnail"><%= image_tag photo.image.thumbnail, class: "img-responsive", :size => '200x200' %></div>
             <h4><%= link_to product.name, product %></h4>
             <h4>Price: <%= product.price %> Euro</h4>
  		<%= button_to 'Add to Cart', line_items_path(product_id: product) %>

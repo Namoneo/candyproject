@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<center>
 <p>
   <strong>Name:</strong>
   <%= @order.name %>
@@ -16,9 +16,9 @@
 </p>
 
 <p>
-  <strong>Pay type:</strong>
+  <strong>Payment method:</strong>
   <%= @order.pay_type %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back to the shop', products_path %>
+</center>
