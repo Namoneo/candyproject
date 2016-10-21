@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe LineItem, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "validations" do
+    it "is invalid without a home_type" do
+      room = Room.new(home_type: "")
+      room.valid?
+      expect(room.errors).to have_key(:home_type)
+    end
 end
