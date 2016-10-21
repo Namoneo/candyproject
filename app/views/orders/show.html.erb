@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<center>
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @order.email %>
+</p>
+
+<p>
+  <strong>Payment method:</strong>
+  <%= @order.pay_type %>
+</p>
+
+<%= link_to 'Back to the shop', products_path %>
+</center>

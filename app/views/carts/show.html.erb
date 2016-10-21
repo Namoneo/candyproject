@@ -149,7 +149,7 @@
       padding-right: 1em;
     }
     .wrapper thead {
-      background: #e74c3c;
+      background: #337AB7;
     }
     .wrapper thead th {
       text-align: left;
@@ -160,7 +160,7 @@
       text-align: right;
     }
     .wrapper tr.alpha {
-      background: #e74c3c;
+      background: #337AB7;
       color: #fff;
     }
     .wrapper tr.alpha > th {
@@ -203,7 +203,7 @@
     }
     .wrapper button.alpha:before {
       content: "x";
-      color: #e74c3c;
+      color: #337AB7;
     }
     .wrapper button.beta {
       background: #1abc9c;
@@ -256,27 +256,27 @@
       background: #2980b9;
     }
     .wrapper.wrapper__beta h2 {
-      color: #3498db;
+      color: #337AB7;
     }
     .wrapper.wrapper__beta li {
-      border-color: #3498db;
+      border-color: #337AB7;
     }
     .wrapper.wrapper__beta input:checked {
-      background: #3498db;
+      background: #337AB7;
     }
     .wrapper.wrapper__gamma {
       border-color: #c0392b;
     }
     .wrapper.wrapper__gamma .wrapper--box {
-      border-top: 0.5em solid #c0392b;
+      border-top: 0.5em solid #337AB7;
       color: #000;
     }
     .wrapper.wrapper__gamma h2,
     .wrapper.wrapper__gamma h3 {
-      color: #e74c3c;
+      color: #337AB7;
     }
     .wrapper.wrapper__gamma hr {
-      border-color: #e74c3c;
+      border-color: #337AB7;
     }
     .wrapper.wrapper__delta {
       border-color: #9b59b6;
@@ -378,7 +378,7 @@
                                     confirm: 'Are you sure?', :class => 'button' %></tr>
         </table>
         <div class="text--right">
-          <button class="beta">checkout</button>
+          <%= button_to "Checkout", new_order_path, method: :get %>
         </div>
       </div>
 

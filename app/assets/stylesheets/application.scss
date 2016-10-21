@@ -103,9 +103,9 @@ body {
 
 .title {
   height: 60px;
-  border-bottom: 1px solid #E1E8EE;
+  border-bottom: 1px solid #337AB7;
   padding: 20px 30px;
-  color: #5E6977;
+  color: #337AB7;
   font-size: 18px;
   font-weight: 400;
 }
@@ -117,35 +117,14 @@ body {
 }
 
 .item:nth-child(3) {
-  border-top:  1px solid #E1E8EE;
-  border-bottom:  1px solid #E1E8EE;
+  border-top:  1px solid #337AB7;
+  border-bottom:  1px solid #337AB7;
 }
 
 .buttons {
   position: relative;
   padding-top: 30px;
   margin-right: 60px;
-}
-.delete-btn,
-.like-btn {
-  display: inline-block;
-  Cursor: pointer;
-}
-.delete-btn {
-  width: 18px;
-  height: 17px;
-  background: url("delete-icn.svg") no-repeat center;
-}
-
-.like-btn {
-  position: absolute;
-  top: 9px;
-  left: 15px;
-  background: url('twitter-heart.png');
-  width: 60px;
-  height: 60px;
-  background-size: 2900%;
-  background-repeat: no-repeat;
 }
 
 .image {
@@ -162,7 +141,7 @@ body {
   text-align: center;
   width: 32px;
   font-size: 16px;
-  color: #43484D;
+  color: #337AB7;
   font-weight: 300;
 }
 
@@ -183,7 +162,7 @@ input:focus {
   padding-top: 27px;
   text-align: center;
   font-size: 16px;
-  color: #43484D;
+  color: #337AB7;
   font-weight: 300;
 }
 
@@ -196,7 +175,7 @@ input:focus {
 .description span {
   display: block;
   font-size: 14px;
-  color: #43484D;
+  color: #337AB7;
   font-weight: 400;
 }
 
@@ -221,3 +200,109 @@ input:focus {
     border-top: 1px solid #595;
   }
   }
+
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.form-style-5{
+  max-width: 500px;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  margin: 10px auto;
+  padding: 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-5 fieldset{
+  border: none;
+}
+.form-style-5 legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+.form-style-5 label {
+  display: block;
+  margin-bottom: 8px;
+}
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 textarea,
+.form-style-5 select {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: rgba(255,255,255,.1);
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 0;
+  outline: 0;
+  padding: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: #e8eeef;
+  color:#8a97a0;
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+
+}
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="datetime"]:focus,
+.form-style-5 input[type="email"]:focus,
+.form-style-5 input[type="number"]:focus,
+.form-style-5 input[type="search"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 input[type="url"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+  background: #d2d9dd;
+}
+.form-style-5 select{
+  -webkit-appearance: menulist-button;
+  height:35px;
+}
+.form-style-5 .number {
+  background: #337AB7;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 input[type="submit"],
+.form-style-5 input[type="button"]
+{
+  position: relative;
+  display: block;
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  margin: 0 auto;
+  background: #337AB7;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid #16a085;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+}
+.form-style-5 input[type="submit"]:hover,
+.form-style-5 input[type="button"]:hover
+{
+  background: #109177;
+}

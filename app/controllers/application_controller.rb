@@ -15,4 +15,7 @@ class ApplicationController < ActionController::Base
     @cart
   end
 
+  def show
+    @line_item = line_item_id(:name)
+  end
 end
