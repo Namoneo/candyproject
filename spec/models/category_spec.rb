@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
 
+  #Association with product.
+
   describe "association with product" do
     let(:user) { create :user }
     let(:category) { create :category }
@@ -16,6 +18,3 @@ RSpec.describe Category, type: :model do
     end
   end
 end
-
-
-

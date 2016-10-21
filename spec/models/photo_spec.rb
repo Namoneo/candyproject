@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
 
-
+  #Association with product.
   describe "association with product" do
     let(:user) { create :user}
     let(:category) { create :category }
