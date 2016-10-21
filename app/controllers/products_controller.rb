@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
       @product = current_user.products.build
     end
 
+
+
     def create
       @product = current_user.products.build(product_params)
 

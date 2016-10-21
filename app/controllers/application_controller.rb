@@ -10,10 +10,21 @@ class ApplicationController < ActionController::Base
   def current_cart
     Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
-    cart = Cart.create
+    @cart = Cart.create
     session[:cart_id] = cart.id
-    cart
+    @cart
   end
 
+  def total_price_products
+    @product.price * quantity
+  end
 
+  def total_price
+    @line_items.to_a.sum { |item| item.total_price }
+  end
+
+  def show
+    @photos = @product.photos
+    @line_item =Product.all
+  end
 end

@@ -48,6 +48,14 @@ body {
   color: white;
 }
 
+.dropdown-menu {
+  width: 400px;
+}
+
+.item-info {
+  display: block;
+}
+
 .logo {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -78,6 +86,8 @@ body {
     right: 0;
   }
 }
+
+
 
 .shopping-cart {
   width: 750px;

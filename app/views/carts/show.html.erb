@@ -1,41 +1,6 @@
 <% if notice %>
     <p id="notice"><%= notice %></p>
 <% end %>
-
-<div class="shopping-cart">
-  <!-- Title -->
-  <div class="title">
-    <span colspan="8">Shopping Cart<span>
-  </div>
-
-  <!-- Product #1 -->
-  <% @cart.line_items.each do |item| %>
-  <div class="item">
-
-    <div class="image">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <%= image_tag item.product.photos.first().image.thumbnail %>
-              </div>
-            </div>
-      </div>
-
-    <div class="description">
-      <span><%= item.product.name %></span>
-    </div>
-
-    <div class="quantity">
-      <span><%= item.quantity %>&times;</span>
-      </div>
-    <div class="total-price"><%= number_to_currency(item.product.price) %> </div>
-    <div class="total-price"><%= number_to_currency(item.total_price) %> </div>
-
-    </div>
-  <% end %>
-
-</div>
-<%= button_to 'Empty cart', @cart, method: :delete,
-              confirm: 'Are you sure?' %>
 <!DOCTYPE html>
 <html >
 <head>
@@ -118,12 +83,11 @@
     .wrapper label {
       cursor: pointer;
     }
-    .wrapper input {
+    .input {
       width: 1.15em;
       height: 1.15em;
       background: #fff;
-      margin-right: .25em;
-      cursor: pointer;
+      margin-right: 40px;
       box-shadow: inset 0 0 0 .25em #fff;
       vertical-align: text-bottom;
       -moz-appearance: none;
@@ -216,6 +180,19 @@
       -o-transition: background 0.15s linear;
       -webkit-transition: background 0.15s linear;
       transition: background 0.15s linear;
+      display:inline-block;
+    }
+    button {
+      border: none;
+      padding: 0.5em;
+      background: #ecf0f1;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -moz-transition: background 0.15s linear;
+      -o-transition: background 0.15s linear;
+      -webkit-transition: background 0.15s linear;
+      transition: background 0.15s linear;
+      display:inline-block;
     }
     .wrapper button:hover {
       background: #bdc3c7;
@@ -251,6 +228,9 @@
     }
     .wrapper .text--right {
       text-align: right;
+    }
+    .wrapper .text--left {
+      text-align: left;
     }
     .wrapper .helper--alpha {
       padding-left: 1.5em;
@@ -334,7 +314,7 @@
         <div class="wrapper wrapper__alpha">
           <h2 class="__alpha">Billing Address</h2>
           <address class="wrapper--box">
-            Tim Pietrusky <br>
+            Gerard <br>
             Frankfurt (Main) <br>
             Germany
           </address>
@@ -441,28 +421,21 @@
                 <div class="pure-u-3-4">
                   <div class="helper--alpha">
                     <h3><%= item.product.name %></h3>
-                    <p>$45.99</p>
+                    <p><%= number_to_currency(item.product.price) %></p>
                     <p>
-                      <button class="alpha">remove</button>
                     </p>
                   </div>
                 </div>
               </div>
             </td>
             <td class="alpha">
-              <input type='number' value="2"><%= item.quantity %>&times;
+              <div class="input"><%= item.quantity %>&times;</div>
             </td>
             <td class="alpha">
-              $45.99
+              <%= number_to_currency(item.total_price) %>
             </td>
           </tr>
               <% end %>
-
-
-
-
-
-
           <tr>
             <td colspan="3"><hr></td>
           </tr>
@@ -470,34 +443,26 @@
           <tr class="wrapper--box">
             <td>
               <div class="pure-g">
-
-
-            </td>
-            <td>
-              <input type='number' value='2'>
             </td>
             <td >
-              $25.98
             </td>
           </tr>
           <tr>
             <th colspan='2'>Subtotal</th>
-            <td>$71.97</td>
+            <td><%= number_to_currency(@cart.total_price) %></td>
           </tr>
           <tr>
-            <th colspan='2'>Sales Tax</th>
-            <td>$3.60</td>
-          </tr>
-          <tr>
+
             <th colspan='2'>Shipping</th>
             <td>$15.00</td>
           </tr>
           <tr class="alpha">
             <th colspan='2'>Total</th>
-            <td>$90.57</td>
+            <td><%= number_to_currency(@cart.total_price + 15) %></td>
           </tr>
+          <tr>        <%= button_to 'Empty cart', @cart, method: :delete,
+                                    confirm: 'Are you sure?', :class => 'button' %></tr>
         </table>
-
         <div class="text--right">
           <button class="beta">checkout</button>
         </div>
@@ -507,7 +472,7 @@
   </div>
 </div>
 
-<script src="js/index.js"></script>
+
 
 
 
