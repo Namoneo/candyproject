@@ -9,12 +9,13 @@
       <% @product.photos.each do |photo| %>
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= image_tag photo.image.thumbnail, :size => '50x50' %>
+          <%= image_tag photo.image.thumbnail, :size => '200x200' %>
         </div>
       </div>
       <% end %>
-  </div>
 
+  </div>
+  <%= button_to 'Add to Cart', line_items_path(product_id: @product) %>
 </div>
 <% if current_user.present? && current_user.admin? %>
 <%= link_to "Delete", product_path( @product.id ), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%>
