@@ -74,7 +74,7 @@ max-width:600px;
                 </span>
                     </li>
                     <li class="divider"></li>
-                    <li><%= link_to "View cart", carts_path(@cart) %></li></a></li>
+                    <li>  <%= button_to 'Add to Cart', line_items_path(product_id: @product) %></a></li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->
