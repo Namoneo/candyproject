@@ -11,12 +11,12 @@ Category.delete_all
 Product.delete_all
 User.delete_all
 
-namoneo = User.create(email: "info@admin.com", password: "secret")
-admin = User.create(email: "admin@admin.com", password: "secret")
+admin = User.create(email: "info@admin.com", password: "secret", role: "admin")
+customer = User.create(email: "customer@customer.com", password: "secret", role: "customer")
 
 # Profiles
-namoneo.profile = Profile.create(first_name: "Malenka", last_name: "van Ommen", street_address: "Blablabla", number: "42", city: "Arnhem", zip_code: "1234ab", state_region: "Gelderland", country: "Netherland")
-admin.profile = Profile.create(first_name: "Admin", last_name: "Admin", street_address: "Adminstreet", number: 1, city: "Madrid", zip_code: "5678er", state_region: "Adminplace", country: "Spain")
+admin.profile = Profile.create(first_name: "Admin", last_name: "Admin", street_address: "Blablabla", number: "42", city: "Arnhem", zip_code: "1234ab", state_region: "Gelderland", country: "Netherland")
+customer.profile = Profile.create(first_name: "Customer", last_name: "Customer", street_address: "Adminstreet", number: 1, city: "Madrid", zip_code: "5678er", state_region: "Adminplace", country: "Spain")
 
 # Photos
 photo1 = Photo.create(remote_image_url: "http://res.cloudinary.com/dxgzovwd1/image/upload/v1476444143/mike_u1mn6h.jpg")
